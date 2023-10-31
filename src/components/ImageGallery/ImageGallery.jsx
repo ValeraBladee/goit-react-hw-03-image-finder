@@ -1,11 +1,19 @@
 import css from './ImageGallery.module.css';
-
-// export default function ImageGallery({ cards, getBigPhoto }) {
-//   return (
-//     <ul className={css.ImageGallery}>
-//       {cards.map(({ webFormatUrl, largeImageURL, tags }) => {
-       
-//       })}
-//     </ul>
-//   );
-// }
+import ImageGalleryItem from '../ImageGalleryItem/ImageGalleryItem';
+export default function ImageGallery({ cards, getBigPhoto }) {
+  return (
+    <ul className={css.ImageGallery}>
+      {cards.map(({ webFormatURL, largeImageURL, tags }) => {
+        return (
+          <ImageGalleryItem
+            key={webFormatURL}
+            srs={webFormatURL}
+            getBigPhoto={getBigPhoto}
+            alt={tags}
+            bigPhoto={largeImageURL}
+          />
+        );
+      })}
+    </ul>
+  );
+}
